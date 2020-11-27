@@ -1,0 +1,78 @@
+//plugins {
+//    id 'com.android.application'
+//}
+
+if (isRunAloneChatModule.toBoolean()) {
+    apply plugin: 'com.android.application'
+} else {
+    apply plugin: 'com.android.library'
+}
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    defaultConfig {
+
+        if (isRunAloneChatModule.toBoolean()) {
+            applicationId "com.example.chat"
+
+        }
+
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+//                arguments = [AROUTER_MODULE_NAME: project.getName()]
+                arguments = [moduleName: project.getName()]
+            }
+        }
+    }
+
+    sourceSets {
+        main {
+            if (isRunAloneChatModule.toBoolean()) {
+                manifest.srcFile 'src/main/manifest/AndroidManifest.xml'
+            } else {
+                manifest.srcFile 'src/main/AndroidManifest.xml'
+            }
+        }
+    }
+
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation rootProject.ext.dependencies.appcompat
+    implementation rootProject.ext.dependencies.material
+    implementation rootProject.ext.dependencies.constraint_layout
+    testImplementation rootProject.ext.dependencies.junit
+    androidTestImplementation rootProject.ext.dependencies.ext_junit
+    androidTestImplementation rootProject.ext.dependencies.espresso
+//    implementation rootProject.ext.dependencies.arouter_api
+    annotationProcessor rootProject.ext.dependencies.arouter_compiler
+//    implementation project(':baselib')
+
+    // Android中gradle的依赖：implementation与api的使用 https://blog.csdn.net/liyi1009365545/article/details/81477299
+    // 这里注意我们依赖 baselib 的时候必须用api project，这样我们App就不用依赖 baselib 了
+    api project(':baselib')
+
+//    if (isRunAloneChatModule.toBoolean() && !isRunAloneHomeModule.toBoolean()) {
+//        implementation project(":home")
+//    }
+}
