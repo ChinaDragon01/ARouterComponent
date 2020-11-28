@@ -21,6 +21,11 @@ import com.example.home.service.HomeService;
 import butterknife.BindView;
 
 /*
+
+    提醒：如果想测试单独调试，本工程主要是将 chat 作为单独调试进行测试的，可以将 isRunAloneChatModule=true 打开 运行 chat
+
+    参考文献如下：
+
     一篇文章搞懂Android组件化,
     https://www.jianshu.com/p/8b6e6a50e21e
 
@@ -53,7 +58,7 @@ import butterknife.BindView;
    https://juejin.cn/post/6881116198889586701
 
    jar包与arr包区别
-                    https://www.jianshu.com/p/a2eddf5a9b88
+   https://www.jianshu.com/p/a2eddf5a9b88
 
  */
 
