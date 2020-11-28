@@ -57,6 +57,13 @@ android {
     }
 }
 
+repositories {
+    flatDir {
+        dirs 'libs'
+    }
+}
+
+
 dependencies {
     implementation rootProject.ext.dependencies.appcompat
     implementation rootProject.ext.dependencies.material
@@ -72,7 +79,13 @@ dependencies {
     // 这里注意我们依赖 baselib 的时候必须用api project，这样我们App就不用依赖 baselib 了
     api project(':baselib')
 
-//    if (isRunAloneChatModule.toBoolean() && !isRunAloneHomeModule.toBoolean()) {
+
+    if (isRunAloneChatModule.toBoolean()) {//单独调试
+
+        implementation(name: 'home-debug', ext: 'aar')// 多工程方式 module 单独调试
+        // 或者
 //        implementation project(":home")
-//    }
+    }
+
+
 }

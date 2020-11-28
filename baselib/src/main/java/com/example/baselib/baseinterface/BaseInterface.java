@@ -9,5 +9,8 @@ package com.example.baselib.baseinterface;
  * Usage:
  * *******************************************************
  */
-public interface BaseActivityInterface extends BaseInterface {
+public interface BaseInterface {
+    void initView();
+    void initData();
+    void initEvent();
 }

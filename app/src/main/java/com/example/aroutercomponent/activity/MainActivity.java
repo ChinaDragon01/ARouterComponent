@@ -48,6 +48,13 @@ import butterknife.BindView;
    Android中gradle的依赖：implementation与api的使用
    https://blog.csdn.net/liyi1009365545/article/details/81477299
 
+
+    “终于懂了” 系列：Android组件化，全面掌握！ | 掘金技术征文-双节特别篇
+   https://juejin.cn/post/6881116198889586701
+
+   jar包与arr包区别
+                    https://www.jianshu.com/p/a2eddf5a9b88
+
  */
 
 //配置的path至少需要两级，如/xx/xxx; 注意：不同module 一级路径名字不能相同，否则编译不通过，会抱错；同意哥一级目录被多次定义
@@ -65,7 +72,7 @@ public class MainActivity extends BaseAppActivity {
     public static final int RESULT_CODE = 20020;
 
     // 使用依赖注入的方式完成服务的调用  HomeService 方式一
-    @Autowired(name = HomeService.PATH_HomeService)
+    @Autowired(name = BaseContacts.PATH_HOME_SERVICE)
     HomeExportService mHomeExportService;
 //    HomeService mHomeExportService;
 
@@ -84,7 +91,7 @@ public class MainActivity extends BaseAppActivity {
 
         //通过服务类Path调用 HomeService  调用方式三 注意： 强制转换 HomeExportService 或者 HomeService
 //        String s3 = ((HomeExportService) ARouter.getInstance().build(HomeService.PATH_HomeService).navigation()).homeData("调用方式三");
-        String s3 = ((HomeService) ARouter.getInstance().build(HomeService.PATH_HomeService).navigation()).homeData("调用方式三");
+        String s3 = ((HomeService) ARouter.getInstance().build(BaseContacts.PATH_HOME_SERVICE).navigation()).homeData("调用方式三");
         LogUitls.i(MainActivity.this, s3);
     }
 

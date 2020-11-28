@@ -15,4 +15,8 @@ public interface BaseContacts {
 
     String ROUTE_PATH_HOME = "/home/HomeActivity";
     String HOME_KEY = "homeKey";
+
+    String PATH_HOME_SERVICE = "/home/HomeService";
+
+    String ROUTE_PATH_HOME_FRAGMENT = "/home/HomeFragment";
 }

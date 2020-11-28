@@ -47,4 +47,11 @@
         android:textColor="@color/black"
         android:textSize="20sp" />
 
+    <FrameLayout
+        android:id="@+id/frame_chat"
+        android:layout_marginTop="40dp"
+        android:layout_width="match_parent"
+        android:background="@color/white"
+        android:layout_height="200dp"/>
+
 </androidx.appcompat.widget.LinearLayoutCompat>
